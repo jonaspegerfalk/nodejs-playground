@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 All users
+
+
+  table.table.table-condensed
+    tr
+      th Name
+      th Email
+      th Created
+    for d in users
+      tr
+        td=d.profile.name
+        td=d.email
+        td=d.createdAt

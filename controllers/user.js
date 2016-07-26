@@ -120,6 +120,23 @@ exports.getAccount = (req, res) => {
 
 
 /**
+ * GET /accounts
+ * Profile page.
+ */
+exports.getAccounts = (req, res) => {
+  // const data = [{a:1}, {a:4711}];
+
+  User.find((err, users) => {
+    const u = users;
+    console.log(users);
+    res.render('account/profiles', {
+      title: 'Account Management', 
+      users
+    });
+  });
+};
+
+/**
  * POST /account/profile
  * Update profile information.
  */
