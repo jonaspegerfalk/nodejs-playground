@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 All exercises
+
+
+  table.table.table-condensed
+    tr
+      th Name
+      th Description
+      th Created
+    for d in exercises
+      tr
+        td
+          a(href='/exercise/details/'+d._id) #{d.name}
+        td=d.description
+        td=d.createdAt
