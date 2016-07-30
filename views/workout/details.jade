@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Workout
+    
+
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='_id', value=workout._id)
+    .form-group
+      label(class='col-sm-2 control-label', for='date') Date
+      .col-sm-8
+        input.form-control(type='date', name='startTime', id='startTime', autofocus=true, value=workout.startTime)
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-envelope
+          | Save
+
+
+
