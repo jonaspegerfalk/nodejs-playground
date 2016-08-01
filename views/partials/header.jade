@@ -11,10 +11,12 @@
         | Project name
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=(title == 'Home') ? 'active' : undefined)
-          a(href='/') Home
-        li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api') API Examples
+        if user
+          li(class=(title == 'My workouts') ? 'active' : undefined)
+            a(href='/workout') My workouts
+        if user
+          li(class=(title == 'Administration') ? 'active' : undefined)
+            a(href='/admin') Administration
         li(class=(title == 'Contact') ? 'active' : undefined)
           a(href='/contact') Contact
       ul.nav.navbar-nav.navbar-right

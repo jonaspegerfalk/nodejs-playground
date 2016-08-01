@@ -33,6 +33,7 @@ const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const exerciseController = require('./controllers/exercise');
 const workoutController = require('./controllers/workout');
+const adminController = require('./controllers/admin');
 
 /**
  * API keys and Passport configuration.
@@ -140,7 +141,9 @@ app.get('/workout/new', passportConfig.isAuthenticated, workoutController.getNew
 app.post('/workout/new', passportConfig.isAuthenticated, workoutController.postNewWorkout);
 app.get('/workout/details/:id', passportConfig.isAuthenticated, workoutController.getWorkoutDetails);
 app.post('/workout/details/:id', passportConfig.isAuthenticated, workoutController.postWorkoutDetails);
-app.get('/workout/index', passportConfig.isAuthenticated, workoutController.getWorkoutIndex);
+app.get('/workout', passportConfig.isAuthenticated, workoutController.getWorkoutIndex);
+
+app.get('/admin', passportConfig.isAuthenticated, adminController.getAdminIndex);
 
 /**
  * API examples routes.
