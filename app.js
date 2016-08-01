@@ -130,6 +130,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 
 app.get('/exercise/details/:id', passportConfig.isAuthenticated, exerciseController.getExerciseDetails);
+app.post('/exercise/details/:id', passportConfig.isAuthenticated, exerciseController.postExerciseDetails);
 app.get('/exercise', passportConfig.isAuthenticated, exerciseController.getExercise);
 app.post('/exercise', passportConfig.isAuthenticated, exerciseController.postExercise);
 app.get('/exercises', passportConfig.isAuthenticated, exerciseController.getExercises);

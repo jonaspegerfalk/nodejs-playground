@@ -9,16 +9,13 @@ const Exercise = require('../models/Exercise');
  * Login page.
  */
 exports.getExercise = (req, res) => {
-  res.render('exercise/exercise', {
+  res.render('exercise/details', {
     title: 'Exercise'
   });
 };
 
 exports.getExerciseDetails = (req, res) => {
-
-
   const exercise = Exercise.findById(req.params.id, (err, exercise) => {
-    console.log('asdfa',err, exercise);
     res.render('exercise/details', {
       title: 'Exercise',
       exercise
@@ -43,7 +40,6 @@ exports.getExercises = (req, res) => {
  * Create a new local account.
  */
 exports.postExercise = (req, res, next) => {
-  req.assert('name', 'Password must be at least 4 characters long').len(4);
 
   const errors = req.validationErrors();
 
@@ -63,5 +59,27 @@ exports.postExercise = (req, res, next) => {
     });
       console.log(req.body);
 
+ 
+};
+
+
+exports.postExerciseDetails = (req, res, next) => {
+  const errors = req.validationErrors();
+  if (errors) {
+    req.flash('errors', errors);
+    return;
+  }
+
+  const exercise = Exercise.findById(req.params.id, (err, exercise) => {
+  exercise.description = req.body.description;
+  exercise.name = req.body.name;
+  exercise.type = req.body.type;
+    exercise.save((err) => {
+      res.redirect('/exercise/details/'+exercise._id);
+    });
+
+  });
+
+  
  
 };

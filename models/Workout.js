@@ -2,16 +2,18 @@ const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const moment = require('moment');
+const Exercise = require('../models/Exercise');
+const User = require('../models/User');
 
 const exerciseSchema = new mongoose.Schema({
-   _exerciseId: mongoose.Schema.Types.ObjectId,
+   _exerciseId: {type: mongoose.Schema.Types.ObjectId, ref: Exercise},
     reps: [Number]
     }
 );
 
 const workoutSchema = new mongoose.Schema({
   startTime: { type: Date, default: Date.now },
-  _userId: mongoose.Schema.Types.ObjectId,
+  _userId: {type: mongoose.Schema.Types.ObjectId, ref: User},
   
   exercises:  [exerciseSchema]
 

@@ -13,6 +13,6 @@ block content
     for d in exercises
       tr
         td
-          a(href='/exercise/details/'+d._id) #{d.name}
+          a(href='/exercise/details/'+d._id) #{d.name||'<missing name>'}
         td=d.description
         td=d.createdAt

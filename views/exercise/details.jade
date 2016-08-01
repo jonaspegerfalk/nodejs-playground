@@ -2,7 +2,8 @@ extends ../layout
 
 block content
   .page-header
-    h3 Exercise
+    a(href='/exercises')
+      h3 Exercise
     
 
   form.form-horizontal(method='POST')
@@ -12,6 +13,12 @@ block content
       label(class='col-sm-2 control-label', for='name') Name
       .col-sm-8
         input.form-control(type='text', name='name', id='name', autofocus=true, value=exercise.name)
+    .form-group
+      label(class='col-sm-2 control-label', for='description') Type
+      .col-sm-8
+        select.form-control(name='type', id='type', value=exercise.type)
+          for e in exercise.exerciseTypes()
+            option #{e}
     .form-group
       label(class='col-sm-2 control-label', for='description') Description
       .col-sm-8
